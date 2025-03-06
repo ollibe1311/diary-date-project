@@ -8,16 +8,33 @@ const CtaSection = () => {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const webhookUrl = 'https://hook.eu2.make.com/yqpqghdu943b7mn6st5l7wsy63glxln6';
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Log the email - this is where you'd send to your backend in production
+    // Log the email locally
     console.log('Email submitted from CTA section:', email);
     
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      // Send data to webhook
+      const response = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        mode: 'no-cors', // Handles CORS issues with third-party webhooks
+        body: JSON.stringify({
+          email: email,
+          source: 'cta_section',
+          timestamp: new Date().toISOString(),
+          referrer: document.referrer || 'direct',
+          location: window.location.href
+        }),
+      });
+      
+      // Reset form and show success message
       setEmail('');
       setIsSubmitting(false);
       
@@ -26,7 +43,16 @@ const CtaSection = () => {
         description: "Welcome to the My Kids Events beta. Check your email for access details.",
         variant: "default",
       });
-    }, 1000);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setIsSubmitting(false);
+      
+      toast({
+        title: "Something went wrong",
+        description: "We couldn't process your request. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
