@@ -3,7 +3,7 @@ import { Clock, Calendar, BellRing, ThumbsUp } from 'lucide-react';
 
 const benefits = [
   {
-    icon: <Clock className="w-10 h-10 text-[#067741]" />,
+    icon: <Clock className="w-10 h-10 text-[#671714]" />,
     title: "Save Hours Every Month",
     description: "Stop manually entering school dates. Our service reduces the time spent interpreting and organizing school communications by up to 90%."
   },
@@ -13,7 +13,7 @@ const benefits = [
     description: "No more scrolling through endless email threads to find that important date. Everything is neatly organized in your calendar."
   },
   {
-    icon: <BellRing className="w-10 h-10 text-[#067741]" />,
+    icon: <BellRing className="w-10 h-10 text-[#671714]" />,
     title: "Never Miss an Event",
     description: "With events automatically in your calendar, you'll get timely reminders for every school activity, performance, or deadline."
   },
