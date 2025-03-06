@@ -51,7 +51,7 @@ const HeroSection = () => {
             </h1>
             
             <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl">
-              Never miss a school event again. My Kids Events automatically converts school emails into organized calendar invites.
+              Never miss a school event again. Automatically convert school emails into organized calendar invites.
             </p>
             
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-10">
