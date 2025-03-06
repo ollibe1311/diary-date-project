@@ -24,7 +24,6 @@ const CtaSection = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        mode: 'no-cors', // Handles CORS issues with third-party webhooks
         body: JSON.stringify({
           email: email,
           source: 'cta_section',
