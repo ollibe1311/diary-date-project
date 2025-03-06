@@ -13,18 +13,15 @@ const CtaSection = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Log the email locally
-    console.log('Email submitted from CTA section:', email);
-    
+
+    console.log('Submitting email:', email);
+
     try {
-      // Send data to webhook
       const response = await fetch(webhookUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        mode: 'no-cors', // Handles CORS issues with third-party webhooks
         body: JSON.stringify({
           email: email,
           source: 'cta_section',
@@ -33,20 +30,27 @@ const CtaSection = () => {
           location: window.location.href
         }),
       });
-      
-      // Reset form and show success message
+
+      console.log('Response status:', response.status);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      // Reset form on success
       setEmail('');
       setIsSubmitting(false);
-      
+
       toast({
         title: "You're in!",
         description: "Welcome to the My Kids Events beta. Check your email for access details.",
         variant: "default",
       });
+
     } catch (error) {
       console.error('Error submitting form:', error);
       setIsSubmitting(false);
-      
+
       toast({
         title: "Something went wrong",
         description: "We couldn't process your request. Please try again.",
