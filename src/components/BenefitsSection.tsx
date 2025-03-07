@@ -5,12 +5,12 @@ const benefits = [
   {
     icon: <Clock className="w-10 h-10 text-[#671714]" />,
     title: "Save Hours Every Month",
-    description: "Stop manually entering school dates. Our service reduces the time spent interpreting and organizing school communications by up to 90%."
+    description: "Stop manually entering school dates. Reduces the time spent interpreting and organizing school communications by up to 90%."
   },
   {
     icon: <Calendar className="w-10 h-10 text-[#671714]" />,
     title: "Reduce Confusion",
-    description: "No more scrolling through endless email threads to find that important date. Everything is neatly organized in your calendar."
+    description: "No more scrolling through endless email threads to find that important date. Everything is neatly organised in your calendar."
   },
   {
     icon: <BellRing className="w-10 h-10 text-[#671714]" />,

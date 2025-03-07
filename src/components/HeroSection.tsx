@@ -129,7 +129,7 @@ const HeroSection = () => {
                 </div>
                 <div className="p-6 bg-white">
                   <div className="mb-4">
-                    <div className="text-sm font-medium mb-2">From: Lincoln Elementary School</div>
+                    <div className="text-sm font-medium mb-2">From: Bondi Primary School</div>
                     <div className="text-sm mb-2">Subject: Upcoming School Events for May</div>
                     <div className="h-px bg-gray-200 w-full mb-3"></div>
                     <p className="text-sm mb-2">Dear Parents,</p>

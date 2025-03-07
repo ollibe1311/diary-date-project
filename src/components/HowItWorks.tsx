@@ -10,8 +10,8 @@ const steps = [
   },
   {
     icon: <Mail className="w-8 h-8 text-white" />,
-    title: "We process in real-time",
-    description: "Our smart AI identifies dates, times, locations, and event details from school emails instantly.",
+    title: "Process in real-time",
+    description: "Smart AI identifies dates, times, locations, and event details from school emails instantly.",
     color: "bg-[#067741]"
   },
   {

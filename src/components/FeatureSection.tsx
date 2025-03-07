@@ -10,7 +10,7 @@ const features = [
   {
     icon: <Calendar className="w-6 h-6 text-[#671714]" />,
     title: "Automatic Calendar Creation",
-    description: "Our AI extracts dates, times, and event details from school emails and creates calendar events automatically."
+    description: "Extract dates, times, and event details from school emails and creates calendar events automatically."
   },
   {
     icon: <Share2 className="w-6 h-6 text-[#671714]" />,
@@ -38,7 +38,7 @@ const FeatureSection = () => {
             Designed for busy parents
           </h2>
           <p className="text-lg text-muted-foreground">
-            Our features make it effortless to keep track of all your children's school events, activities, and important dates.
+            Effortlessly keep track of all your children's school events, activities, and important dates.
           </p>
         </div>
         
