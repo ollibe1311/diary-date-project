@@ -7,12 +7,12 @@ const Footer = () => {
       <div className="container mx-auto px-4 text-center">
         <p className="text-sm text-muted-foreground">
           Made with ❤️ by <a 
-            href="https://oliveberger.co" 
+            href="https://oliverberger.co" 
             target="_blank" 
             rel="noopener noreferrer"
             className="text-[#067741] hover:underline transition-colors"
           >
-            oliveberger.co
+            oliverberger.co
           </a>
         </p>
       </div>
