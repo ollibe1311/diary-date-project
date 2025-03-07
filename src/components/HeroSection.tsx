@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Mail, CheckCircle, Calendar } from 'lucide-react';
+import { Mail, CheckCircle, Calendar, Check, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 
@@ -142,8 +142,8 @@ const HeroSection = () => {
             </div>
           </div>
           
-          <div className="flex-1 relative animate-slide-up">
-            <div className="relative max-w-md mx-auto">
+          <div className="flex-1 relative animate-slide-up w-full max-w-md mx-auto">
+            <div className="relative">
               <div className="absolute inset-0 -m-4 bg-[#ffe7f1]/40 rounded-xl blur-xl animate-image-glow"></div>
               <div className="glass-card rounded-xl overflow-hidden shadow-lg relative">
                 <div className={`transition-all duration-700 ${animationState === 'calendar' ? 'bg-[#067741]' : 'bg-[#671714]'} text-[#ffe7f1] px-6 py-4 flex items-center gap-2`}>
@@ -155,14 +155,14 @@ const HeroSection = () => {
                   <span className="font-medium">{animationState === 'email' ? 'School Email' : 'Calendar Event'}</span>
                 </div>
                 <div className="p-6 bg-white">
-                  <div className="min-h-[250px] relative"> {/* Fixed height container with relative positioning */}
+                  <div className="h-[280px] relative"> {/* Fixed height container with relative positioning */}
                     {/* Email content with transition */}
                     <div 
                       className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
                         animationState === 'email' ? 'opacity-100 z-10' : 'opacity-0 z-0'
                       } ${isTransitioning && animationState !== 'email' ? 'opacity-0' : ''}`}
                     >
-                      <div className="text-sm font-medium mb-2">From: Lincoln Elementary School</div>
+                      <div className="text-sm font-medium mb-2">From: Melbourne Primary School</div>
                       <div className="text-sm mb-2">Subject: Upcoming School Events for May</div>
                       <div className="h-px bg-gray-200 w-full mb-3"></div>
                       <p className="text-sm mb-2">Dear Parents,</p>
@@ -178,7 +178,7 @@ const HeroSection = () => {
                     <div 
                       className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
                         animationState === 'calendar' ? 'opacity-100 z-10' : 'opacity-0 z-0'
-                      } ${isTransitioning && animationState !== 'calendar' ? 'opacity-0' : ''}`}
+                      } ${isTransitioning && animationState !== 'calendar' ? 'opacity-0' : ''} overflow-y-auto`}
                     >
                       <div className="text-sm font-medium mb-3">Your Upcoming Events:</div>
                       <div className="space-y-4 mb-3">
@@ -186,25 +186,41 @@ const HeroSection = () => {
                           <div className="flex justify-between items-start">
                             <div>
                               <p className="font-medium">Parent-Teacher Conference</p>
-                              <p className="text-xs text-gray-500">Lincoln Elementary School</p>
+                              <p className="text-xs text-gray-500">Melbourne Primary School</p>
                             </div>
                             <div className="text-xs bg-[#067741]/10 text-[#067741] px-2 py-1 rounded-full">
                               May 15
                             </div>
                           </div>
                           <div className="mt-2 text-xs">3:30 PM - 4:00 PM</div>
+                          <div className="mt-3 flex gap-2">
+                            <button className="flex items-center gap-1 text-xs bg-[#067741] text-white px-3 py-1 rounded-full">
+                              <Check className="w-3 h-3" /> Accept
+                            </button>
+                            <button className="flex items-center gap-1 text-xs bg-gray-200 text-gray-700 px-3 py-1 rounded-full">
+                              <X className="w-3 h-3" /> Reject
+                            </button>
+                          </div>
                         </div>
                         <div className="p-3 border border-gray-200 rounded-lg">
                           <div className="flex justify-between items-start">
                             <div>
                               <p className="font-medium">School Sports Day</p>
-                              <p className="text-xs text-gray-500">Lincoln Elementary School</p>
+                              <p className="text-xs text-gray-500">Melbourne Primary School</p>
                             </div>
                             <div className="text-xs bg-[#067741]/10 text-[#067741] px-2 py-1 rounded-full">
                               May 22
                             </div>
                           </div>
                           <div className="mt-2 text-xs">9:00 AM - 2:00 PM</div>
+                          <div className="mt-3 flex gap-2">
+                            <button className="flex items-center gap-1 text-xs bg-[#067741] text-white px-3 py-1 rounded-full">
+                              <Check className="w-3 h-3" /> Accept
+                            </button>
+                            <button className="flex items-center gap-1 text-xs bg-gray-200 text-gray-700 px-3 py-1 rounded-full">
+                              <X className="w-3 h-3" /> Reject
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
