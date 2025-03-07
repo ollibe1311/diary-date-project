@@ -8,6 +8,7 @@ const HeroSection = () => {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [animationState, setAnimationState] = useState('email'); // 'email' or 'calendar'
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const { toast } = useToast();
   const webhookUrl = 'https://hook.eu2.make.com/yqpqghdu943b7mn6st5l7wsy63glxln6';
 
@@ -56,11 +57,23 @@ const HeroSection = () => {
     }
   };
 
-  // Every 4 seconds, toggle the animation state
+  // Smoother transition between states
   useEffect(() => {
     const interval = setInterval(() => {
-      setAnimationState(prevState => prevState === 'email' ? 'calendar' : 'email');
-    }, 4000);
+      // Start transition
+      setIsTransitioning(true);
+      
+      // After transition out completes, change the state
+      setTimeout(() => {
+        setAnimationState(prevState => prevState === 'email' ? 'calendar' : 'email');
+        
+        // After state change, transition back in
+        setTimeout(() => {
+          setIsTransitioning(false);
+        }, 50);
+      }, 500); // Half of our transition duration
+      
+    }, 6000); // Increased time between transitions
     
     return () => clearInterval(interval);
   }, []);
@@ -142,51 +155,59 @@ const HeroSection = () => {
                   <span className="font-medium">{animationState === 'email' ? 'School Email' : 'Calendar Event'}</span>
                 </div>
                 <div className="p-6 bg-white">
-                  <div className="min-h-[250px]"> {/* Fixed height container */}
-                    {animationState === 'email' ? (
-                      <div className="transition-opacity duration-500 opacity-100 h-full">
-                        <div className="text-sm font-medium mb-2">From: Lincoln Elementary School</div>
-                        <div className="text-sm mb-2">Subject: Upcoming School Events for May</div>
-                        <div className="h-px bg-gray-200 w-full mb-3"></div>
-                        <p className="text-sm mb-2">Dear Parents,</p>
-                        <p className="text-sm mb-3">Please note the following important dates:</p>
-                        <ul className="text-sm space-y-2 mb-3">
-                          <li><strong>Parent-Teacher Conference:</strong> May 15th at 3:30 PM</li>
-                          <li><strong>School Sports Day:</strong> May 22nd from 9:00 AM to 2:00 PM</li>
-                          <li><strong>End of Term Assembly:</strong> May 28th at 10:30 AM</li>
-                        </ul>
-                      </div>
-                    ) : (
-                      <div className="transition-opacity duration-500 opacity-100 h-full">
-                        <div className="text-sm font-medium mb-3">Your Upcoming Events:</div>
-                        <div className="space-y-4 mb-3">
-                          <div className="p-3 border border-gray-200 rounded-lg">
-                            <div className="flex justify-between items-start">
-                              <div>
-                                <p className="font-medium">Parent-Teacher Conference</p>
-                                <p className="text-xs text-gray-500">Lincoln Elementary School</p>
-                              </div>
-                              <div className="text-xs bg-[#067741]/10 text-[#067741] px-2 py-1 rounded-full">
-                                May 15
-                              </div>
+                  <div className="min-h-[250px] relative"> {/* Fixed height container with relative positioning */}
+                    {/* Email content with transition */}
+                    <div 
+                      className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                        animationState === 'email' ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                      } ${isTransitioning && animationState !== 'email' ? 'opacity-0' : ''}`}
+                    >
+                      <div className="text-sm font-medium mb-2">From: Lincoln Elementary School</div>
+                      <div className="text-sm mb-2">Subject: Upcoming School Events for May</div>
+                      <div className="h-px bg-gray-200 w-full mb-3"></div>
+                      <p className="text-sm mb-2">Dear Parents,</p>
+                      <p className="text-sm mb-3">Please note the following important dates:</p>
+                      <ul className="text-sm space-y-2 mb-3">
+                        <li><strong>Parent-Teacher Conference:</strong> May 15th at 3:30 PM</li>
+                        <li><strong>School Sports Day:</strong> May 22nd from 9:00 AM to 2:00 PM</li>
+                        <li><strong>End of Term Assembly:</strong> May 28th at 10:30 AM</li>
+                      </ul>
+                    </div>
+                    
+                    {/* Calendar content with transition */}
+                    <div 
+                      className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                        animationState === 'calendar' ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                      } ${isTransitioning && animationState !== 'calendar' ? 'opacity-0' : ''}`}
+                    >
+                      <div className="text-sm font-medium mb-3">Your Upcoming Events:</div>
+                      <div className="space-y-4 mb-3">
+                        <div className="p-3 border border-gray-200 rounded-lg">
+                          <div className="flex justify-between items-start">
+                            <div>
+                              <p className="font-medium">Parent-Teacher Conference</p>
+                              <p className="text-xs text-gray-500">Lincoln Elementary School</p>
                             </div>
-                            <div className="mt-2 text-xs">3:30 PM - 4:00 PM</div>
-                          </div>
-                          <div className="p-3 border border-gray-200 rounded-lg">
-                            <div className="flex justify-between items-start">
-                              <div>
-                                <p className="font-medium">School Sports Day</p>
-                                <p className="text-xs text-gray-500">Lincoln Elementary School</p>
-                              </div>
-                              <div className="text-xs bg-[#067741]/10 text-[#067741] px-2 py-1 rounded-full">
-                                May 22
-                              </div>
+                            <div className="text-xs bg-[#067741]/10 text-[#067741] px-2 py-1 rounded-full">
+                              May 15
                             </div>
-                            <div className="mt-2 text-xs">9:00 AM - 2:00 PM</div>
                           </div>
+                          <div className="mt-2 text-xs">3:30 PM - 4:00 PM</div>
+                        </div>
+                        <div className="p-3 border border-gray-200 rounded-lg">
+                          <div className="flex justify-between items-start">
+                            <div>
+                              <p className="font-medium">School Sports Day</p>
+                              <p className="text-xs text-gray-500">Lincoln Elementary School</p>
+                            </div>
+                            <div className="text-xs bg-[#067741]/10 text-[#067741] px-2 py-1 rounded-full">
+                              May 22
+                            </div>
+                          </div>
+                          <div className="mt-2 text-xs">9:00 AM - 2:00 PM</div>
                         </div>
                       </div>
-                    )}
+                    </div>
                   </div>
                   
                   <div className="flex justify-center mt-4">
