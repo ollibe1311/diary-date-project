@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Mail, CheckCircle, Calendar } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
@@ -57,7 +57,7 @@ const HeroSection = () => {
   };
 
   // Every 4 seconds, toggle the animation state
-  React.useEffect(() => {
+  useEffect(() => {
     const interval = setInterval(() => {
       setAnimationState(prevState => prevState === 'email' ? 'calendar' : 'email');
     }, 4000);
