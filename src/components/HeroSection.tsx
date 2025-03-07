@@ -142,52 +142,54 @@ const HeroSection = () => {
                   <span className="font-medium">{animationState === 'email' ? 'School Email' : 'Calendar Event'}</span>
                 </div>
                 <div className="p-6 bg-white">
-                  {animationState === 'email' ? (
-                    <div className="transition-opacity duration-500 opacity-100">
-                      <div className="text-sm font-medium mb-2">From: Lincoln Elementary School</div>
-                      <div className="text-sm mb-2">Subject: Upcoming School Events for May</div>
-                      <div className="h-px bg-gray-200 w-full mb-3"></div>
-                      <p className="text-sm mb-2">Dear Parents,</p>
-                      <p className="text-sm mb-3">Please note the following important dates:</p>
-                      <ul className="text-sm space-y-2 mb-3">
-                        <li><strong>Parent-Teacher Conference:</strong> May 15th at 3:30 PM</li>
-                        <li><strong>School Sports Day:</strong> May 22nd from 9:00 AM to 2:00 PM</li>
-                        <li><strong>End of Term Assembly:</strong> May 28th at 10:30 AM</li>
-                      </ul>
-                    </div>
-                  ) : (
-                    <div className="transition-opacity duration-500 opacity-100">
-                      <div className="text-sm font-medium mb-3">Your Upcoming Events:</div>
-                      <div className="space-y-4 mb-3">
-                        <div className="p-3 border border-gray-200 rounded-lg">
-                          <div className="flex justify-between items-start">
-                            <div>
-                              <p className="font-medium">Parent-Teacher Conference</p>
-                              <p className="text-xs text-gray-500">Lincoln Elementary School</p>
+                  <div className="min-h-[250px]"> {/* Fixed height container */}
+                    {animationState === 'email' ? (
+                      <div className="transition-opacity duration-500 opacity-100 h-full">
+                        <div className="text-sm font-medium mb-2">From: Lincoln Elementary School</div>
+                        <div className="text-sm mb-2">Subject: Upcoming School Events for May</div>
+                        <div className="h-px bg-gray-200 w-full mb-3"></div>
+                        <p className="text-sm mb-2">Dear Parents,</p>
+                        <p className="text-sm mb-3">Please note the following important dates:</p>
+                        <ul className="text-sm space-y-2 mb-3">
+                          <li><strong>Parent-Teacher Conference:</strong> May 15th at 3:30 PM</li>
+                          <li><strong>School Sports Day:</strong> May 22nd from 9:00 AM to 2:00 PM</li>
+                          <li><strong>End of Term Assembly:</strong> May 28th at 10:30 AM</li>
+                        </ul>
+                      </div>
+                    ) : (
+                      <div className="transition-opacity duration-500 opacity-100 h-full">
+                        <div className="text-sm font-medium mb-3">Your Upcoming Events:</div>
+                        <div className="space-y-4 mb-3">
+                          <div className="p-3 border border-gray-200 rounded-lg">
+                            <div className="flex justify-between items-start">
+                              <div>
+                                <p className="font-medium">Parent-Teacher Conference</p>
+                                <p className="text-xs text-gray-500">Lincoln Elementary School</p>
+                              </div>
+                              <div className="text-xs bg-[#067741]/10 text-[#067741] px-2 py-1 rounded-full">
+                                May 15
+                              </div>
                             </div>
-                            <div className="text-xs bg-[#067741]/10 text-[#067741] px-2 py-1 rounded-full">
-                              May 15
-                            </div>
+                            <div className="mt-2 text-xs">3:30 PM - 4:00 PM</div>
                           </div>
-                          <div className="mt-2 text-xs">3:30 PM - 4:00 PM</div>
-                        </div>
-                        <div className="p-3 border border-gray-200 rounded-lg">
-                          <div className="flex justify-between items-start">
-                            <div>
-                              <p className="font-medium">School Sports Day</p>
-                              <p className="text-xs text-gray-500">Lincoln Elementary School</p>
+                          <div className="p-3 border border-gray-200 rounded-lg">
+                            <div className="flex justify-between items-start">
+                              <div>
+                                <p className="font-medium">School Sports Day</p>
+                                <p className="text-xs text-gray-500">Lincoln Elementary School</p>
+                              </div>
+                              <div className="text-xs bg-[#067741]/10 text-[#067741] px-2 py-1 rounded-full">
+                                May 22
+                              </div>
                             </div>
-                            <div className="text-xs bg-[#067741]/10 text-[#067741] px-2 py-1 rounded-full">
-                              May 22
-                            </div>
+                            <div className="mt-2 text-xs">9:00 AM - 2:00 PM</div>
                           </div>
-                          <div className="mt-2 text-xs">9:00 AM - 2:00 PM</div>
                         </div>
                       </div>
-                    </div>
-                  )}
+                    )}
+                  </div>
                   
-                  <div className="flex justify-center">
+                  <div className="flex justify-center mt-4">
                     <div className="shine h-10 w-40 rounded-lg"></div>
                   </div>
                 </div>
